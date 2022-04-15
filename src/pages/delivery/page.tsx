@@ -21,7 +21,9 @@ import {
 
 export const DeliveryPage: FC = () => {
   useEffect(() => pageMounted(), []);
+
   const submitDisabled = useStore($submitDisabled);
+
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
     formSubmitted();
@@ -66,6 +68,7 @@ const PickupCentre: FC = () => {
   const opened = useStore($isPickup);
   const availableStores = useStore($availablePickupStores);
   const selectedStore = useStore($selectedPickupStore);
+
   if (!opened) return null;
 
   return (
@@ -87,6 +90,7 @@ const PickupCentre: FC = () => {
 const Address: FC = () => {
   const address = useStore($deliveryAddress);
   const required = useStore($requireAddress);
+
   if (!required) return null;
 
   return (
@@ -102,6 +106,7 @@ const Address: FC = () => {
 const ZipCode: FC = () => {
   const zipcode = useStore($zipCode);
   const required = useStore($requireZipCode);
+
   if (!required) return null;
 
   return (

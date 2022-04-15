@@ -1,5 +1,5 @@
-import { createEvent, createStore } from 'effector';
-import { $currentBasket } from '../../entities/basket';
+import { createEvent, createStore, sample } from 'effector';
+import { $currentBasket, basketBuyNowClicked } from '../../entities/basket';
 
 export const pageMounted = createEvent();
 export const submitClicked = createEvent();
@@ -16,3 +16,9 @@ export const $basketCheckedUp = createStore(false);
 
 $basketCheckedUp.on(submitClicked, () => true);
 $basketCheckedUp.reset($products);
+
+sample({
+  clock: basketBuyNowClicked,
+  fn: () => true,
+  target: $basketCheckedUp,
+});

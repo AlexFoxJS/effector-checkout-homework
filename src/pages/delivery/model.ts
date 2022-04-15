@@ -41,7 +41,6 @@ const $isZipCodeValid = $zipCode.map(isValidZipCode);
 const $isCourierValid = combine($isAddressValid, $isZipCodeValid, (isAddress, isZip) => isAddress && isZip);
 
 const $isPostalValid = combine($isAddressValid, $isZipCodeValid, (isAddress, isZip) => isAddress && isZip);
-
 const $isPickupValid = createStore(true);
 
 const $isFormValid = combine(
